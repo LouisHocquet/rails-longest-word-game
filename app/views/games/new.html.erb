@@ -1,0 +1,20 @@
+<div class="row-container">
+  <h1>New game</h1>
+  <h2 class="mt-4">Here are the letters</h2>
+  <div class="flex-container">
+      <% @letters.each do |letter| %>
+        <div class="flex-letter flex-container">
+          <p><%= letter.capitalize %></p>
+        </div>
+      <% end %>
+  </div>
+
+    <h2 class="mt-4">What is your longest word? (English)</h2>
+    <form action="/score" method="post" class="form-inline d-flex">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <input type="text" class="form-control me-3" name="word">
+      <%= hidden_field_tag :letters, @letters %>
+      <input type="submit" class="btn btn-primary">
+    </form>
+</div>
+
